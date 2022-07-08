@@ -6,7 +6,7 @@ public class CircularQueue{
   
 
   public void createQueue(int siz){
-    queue=new int[size];
+    queue=new int[siz];
     beg=-1;
     top=-1;
     size=siz;
