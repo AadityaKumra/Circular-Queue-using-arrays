@@ -1,42 +1,51 @@
 public class CircularQueue{
   int size;
   int[] queue;
-  int beg=-1;
-  int top=-1;
+  int beg;
+  int top;
   
 
-  public void createQueue(int size,int value){
-    beg++;
-    top++;
+  public void createQueue(int siz){
     queue=new int[size];
-    queue[beg]=value;
+    beg=-1;
+    top=-1;
+    size=siz;
     System.out.println("Queue created successfully.");
   }
 
   public boolean isEmpty(){
-    if(beg==-1)return true;
+    if(top==-1)return true;
     else return false;
   }
 
-  // public boolean isFull(){
+  public boolean isFull(){
     
-  //   if(top+1==beg) return true;
-  //   else return false;
-  // }
+    if(top+1==beg) return true;
+    else if(beg==0 && top+1==size) return true;
+    else return false;
+  }
 
-  // public void Enqueue(int value){
-  //   if(isEmpty()){
-  //     createQueue(size, value);
-  //   }
+  public void Enqueue(int value){
+    if(isEmpty()){
+      beg=0;
+      top++;
+      queue[top]=value;
+      System.out.println("Successfull inserted " + value);
+    }
 
-  //   if(isFull()){
-  //     System.out.println("Alas! Already full.");
-  //   }
+    if(isFull()){
+      System.out.println("Alas! Already full.");
+    }
       
-  //   else{
-  //     top++;
-  //     queue[top]=value;
-  //   }
-  // }
-  
+    else{
+      if(top+1==size){
+        top=0;
+      }
+      else{
+      top++;
+      }
+    queue[top]=value;
+  }
+  System.out.println("Successfull inserted " + value);
+  }
 }
