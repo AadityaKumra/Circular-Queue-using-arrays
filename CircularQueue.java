@@ -1,51 +1,52 @@
 public class CircularQueue{
+  int[] arr;
+  int topOfQueue;
+  int beginningOfQueue;
   int size;
-  int[] queue;
-  int beg;
-  int top;
-  
 
-  public void createQueue(int siz){
-    queue=new int[siz];
-    beg=-1;
-    top=-1;
-    size=siz;
-    System.out.println("Queue created successfully.");
+  public CircularQueue(int size){
+    this.arr=new int[size];
+    this.size=size;
+    this.topOfQueue=-1;
+    this.beginningOfQueue=-1;
+    System.out.println("Circular Queue of size "+size+" created successfully.");
   }
 
   public boolean isEmpty(){
-    if(top==-1)return true;
+    if(topOfQueue==-1){
+      return true;
+    }
     else return false;
   }
 
   public boolean isFull(){
-    
-    if(top+1==beg) return true;
-    else if(beg==0 && top+1==size) return true;
+    if(topOfQueue+1==beginningOfQueue){
+      return true;
+    }
+    if(beginningOfQueue==0 && topOfQueue+1==size){
+      return true;
+    }
     else return false;
   }
 
-  public void Enqueue(int value){
-    if(isEmpty()){
-      beg=0;
-      top++;
-      queue[top]=value;
-      System.out.println("Successfull inserted " + value);
+  public void enQueue(int value){
+    if (isFull()){
+      System.out.println("Queue is already full");
     }
-
-    if(isFull()){
-      System.out.println("Alas! Already full.");
-    }
-      
-    else{
-      if(top+1==size){
-        top=0;
-      }
+    else if(isEmpty()){
+      beginningOfQueue=0;
+      topOfQueue++;
+      arr[topOfQueue]=value;
+      System.out.println("succesfully inserted "+value+" into the queue.");}
       else{
-      top++;
-      }
-    queue[top]=value;
-  }
-  System.out.println("Successfull inserted " + value);
+        if(topOfQueue+1==size){
+          topOfQueue=0;
+        }
+        else{
+          topOfQueue++;
+        }
+        arr[topOfQueue]=value;
+        System.out.println("succesfully inserted "+value+" into the queue.");
+    }
   }
 }

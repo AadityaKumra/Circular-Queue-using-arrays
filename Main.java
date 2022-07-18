@@ -1,19 +1,14 @@
 class Main {
   public static void main(String[] args) {
-    CircularQueue q=new CircularQueue();
-    q.createQueue(3);
-    
-    boolean a=q.isEmpty();
-    if(a){
-      System.out.println("Empty.");
-    }
-    else{
-      System.out.println("EH. not empty");
-    }
-    q.isFull();
-    q.Enqueue(2);
-    q.Enqueue(3);
-    q.Enqueue(4);
-    
+    CircularQueue cq=new CircularQueue(3);
+    boolean res=cq.isEmpty();
+    System.out.println(res);
+    res=cq.isFull();
+    System.out.println(res);
+    cq.enQueue(0);
+    cq.enQueue(1);
+    cq.enQueue(2);
+    cq.enQueue(3);
+    cq.enQueue(4);
   }
 }
